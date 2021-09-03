@@ -1,0 +1,51 @@
+// ==UserScript==
+// @name          CodeForcesHideChildrenComments
+// @description   Hamza
+// @include   https://codeforces.com/blog/entry/*
+// @run-at      document-idle
+// ==/UserScript==
+const buttonstylestring='color:#000000;border:5px solid #ffffff;display:inline-block;text-decoration:none;';
+const showchildrenstring='Show Children Comments';
+const hidechildrenstring='Hide Children Comments';
+var UlList;
+var text;
+var temp;
+var button;
+var CommentsList;
+
+
+CommentsList = document.getElementsByClassName("comment");
+
+for(var i=0;i<CommentsList.length;i++){
+  CommentsList[i].style.border= "thin solid #000000";
+  CommentsList[i].style.borderRadius= "20px";
+
+  // CommentsList[i].style.backgroundColor=' #ccccff';
+  UlList=CommentsList[i].getElementsByTagName("ul");
+
+  if(UlList.length==0||UlList[0].children.length==0){
+    continue;
+  }
+  if(1){
+    temp=CommentsList[i].getElementsByClassName("reply info")[0];
+    temp.innerHTML+='<button id="button'+i+'">'+showchildrenstring+'</button>';
+    button = document.getElementById("button"+i);
+    temp=temp.parentElement.parentElement.parentElement.parentElement.parentElement.children[1];
+    temp.style.display ='none'; //hides every child on page load.
+    button.style=buttonstylestring;
+
+    button.addEventListener('click',function(){
+        var temps=this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1];
+        if(temps.style.display!='none'){
+        this.innerHTML=showchildrenstring;
+        temps.style.display ='none';
+        }
+        else{
+        this.innerHTML=hidechildrenstring;
+        temps.style.display ="";
+        }
+        });
+    button.removeAttribute('id');
+  }
+
+}

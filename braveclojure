@@ -1,0 +1,23 @@
+// ==UserScript==
+// @name         clojure book dark mode
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       me
+// @match        https://www.braveclojure.com/*
+// @icon         https://www.google.com/s2/favicons?domain=braveclojure.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+ 'use strict';
+ var bbdy = document.getElementsByTagName('body')[0];
+ var code = document.getElementsByTagName('code');
+ for(var a of code){
+ a.style='background: #514b46;';
+ }
+ var style = document.createElement('style');
+ document.body.id='.head { background: #000;color:#fff !important; }';
+ document.body.style='background: #000;color:#fff !important;';
+
+ })();

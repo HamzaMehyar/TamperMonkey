@@ -1,0 +1,119 @@
+// ==UserScript==
+// @name          Codeforces Dark mode
+
+// @description   Hamza
+// @include   https://codeforces.com/*
+// @run-at      document-idle
+// @grant          GM_addStyle
+// ==/UserScript==
+
+(function() {
+ 'use strict';
+ //image
+ var img = document.getElementsByTagName('img')[0];
+ img.style='filter: invert(100%);'
+ //image
+
+
+ var color1="#1c1b2d"
+ var color2="#181818"
+ var altText="#fff"
+ var text="#CCCCCC"
+ var background='181818'
+ document.getElementsByTagName('a')[21].style='color:'+text+'!important'; //contest name
+ document.body.style='background: #'+background +';color:'+text+'!important;'; //background
+
+ GM_addStyle ( `
+     .roundbox .dark {
+     background-color:${color1};
+     }
+     .roundbox{
+     background-color: ${color2};
+     }
+     .problem-statement .sample-tests pre {
+     line-height: 1.25em;
+padding: .25em;
+margin: 0;
+background-color: ${color1};
+}
+
+div.ttypography .MathJax {     /*math ajax*/
+background:#ff070759;
+color: ${altText} !important
+
+}
+.second-level-menu-list li a {
+position: relative;
+overflow: hidden;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 1.2rem;
+color: ${text};
+outline: none;
+         text-align: center;
+         line-height: 20px;
+height: 20px;
+top: 1px;
+     z-index: 10;
+     letter-spacing: 0;
+float: left;
+display: block;
+margin: auto 8px;
+}
+.roundbox .roundbox-lt {
+background: url(../images/roundbox/roundbox-lt.pn) no-repeat top left;
+position: absolute;
+top: -1px;
+left: -1px;
+}
+.roundbox {
+border:1px solid #b9b9b9;
+position:relative
+}
+
+div.ttypography {
+  font-family: helvetica neue,Helvetica,Arial,sans-serif;
+base: 14px;
+      line-height: 21px;
+color: ${text};
+       -webkit-text-size-adjust: 100%;
+       font-size: 1.4rem;
+       word-wrap: break-word;
+margin: 1.5em 0 0 !important;
+}
+div.ttypography pre, div.ttypography code { /* test cases */
+color:#fff;
+}
+.menu-list li a {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-decoration: none;
+color: ${text};
+outline: none;
+         text-align: center;
+         text-transform: uppercase;
+         letter-spacing: 0;
+display: block;
+float: left;
+height: 20px;
+overflow: hidden;
+margin: 0;
+        line-height: 22px;
+}
+.second-level-menu-list li.backLava {
+background: url(../images/menu/lava-right.pn) no-repeat top right;
+width: 9px;
+height: 20px;
+        z-index: 8;
+position: absolute;
+}
+.second-level-menu-list li.backLava {/*removes marker on problems sumbit etc */
+background: url(../images/menu/lava-right.pn) no-repeat top right;
+width: 9px;
+height: 20px;
+        z-index: 8;
+position: absolute;
+}
+` );
+})();
